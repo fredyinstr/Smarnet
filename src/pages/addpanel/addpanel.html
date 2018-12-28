@@ -1,0 +1,23 @@
+<ion-header>
+
+    <ion-navbar color="secondary">
+        <ion-title>Agregar panel</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-list>
+
+        <ion-item>
+            <ion-label stacked>Nombre del panel</ion-label>
+            <ion-input type="text" value="" [(ngModel)]="nombrePanel"></ion-input>
+        </ion-item>
+
+
+    </ion-list>
+    <button ion-button block color="secondary" (click)="crearPanel()">Crear Panel</button>
+
+</ion-content>

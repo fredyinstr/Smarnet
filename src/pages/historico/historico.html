@@ -1,0 +1,38 @@
+<ion-header>
+
+    <ion-navbar color="secondary">
+        <ion-title>
+            <h3>Histórico {{label}}</h3>
+        </ion-title>
+    </ion-navbar>
+    <ion-toolbar color="light">
+
+
+
+        <ion-list>
+            <ion-item color="light">
+                <button ion-button outline item-start icon-start (click)="atras()">
+                    <ion-icon name="arrow-dropleft-circle"></ion-icon>
+                    Atrás
+                  </button>
+                <label ion-label text-center> Desde {{desde}}, hasta {{hasta}} </label>
+                <button ion-button outline item-end icon-end (click)="adelante()">            
+                    Adelante
+                    <ion-icon name="arrow-dropright-circle"></ion-icon>
+                  </button>
+            </ion-item>
+
+        </ion-list>
+
+    </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content padding *ngIf="lineChartData">
+
+    <div class="container">
+        <canvas baseChart width="400" height="160" [datasets]="lineChartData" [options]="lineChartOptions" [legend]="lineChartLegend" [chartType]="lineChartType">
+    </canvas>
+    </div>
+</ion-content>

@@ -1,0 +1,104 @@
+<ion-header>
+
+    <ion-navbar color="secondary">
+        <ion-buttons left>
+            <button ion-button (click)="regresar()">
+                            <ion-icon name="arrow-back"></ion-icon>
+                          </button>
+        </ion-buttons>
+
+        <ion-title>
+            <h3>Monitor</h3>
+        </ion-title>
+    </ion-navbar>
+    <ion-toolbar color="light">
+        <h4>{{titulo}} </h4>
+
+        <ion-buttons end>
+            <button color="danger" ion-button icon-start (click)="eliminarPanel()">
+                        <ion-icon name="trash"></ion-icon>
+                        Eliminar panel
+                      </button>
+        </ion-buttons>
+    </ion-toolbar>
+
+</ion-header>
+
+
+
+<ion-content no-padding>
+
+
+    <ion-grid no-padding>
+        <ion-row align-items-center no-padding>
+            <ion-col col-6 col-sm-4 no-padding align-self-center *ngFor="let tag of iotDatap.options">
+                <ion-card>
+                    <ion-card-content>
+                        <gauge *ngIf="tag" [options]="tag" [max]="tag.max" [value]="0"></gauge>
+                        <!-- <justgage [options]="tag" [max]="tag.max" [value]="0"></justgage> -->
+                        <ion-buttons no-padding>
+                            <button ion-button icon-only small clear (click)="editarTag(tag.tag_id)">
+                                        <ion-icon name="create"></ion-icon>                        
+                                    </button>
+                            <button ion-button icon-only small clear (click)="eliminarTag(tag.tag_id)">
+                                <ion-icon name="trash"></ion-icon>                        
+                            </button>
+                            <button ion-button icon-only small clear (click)="historico(tag.tag_id, tag.title)">
+                                <ion-icon name="stats"></ion-icon>                        
+                            </button>
+                        </ion-buttons>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+
+
+
+
+    <!-- <ion-list>
+
+        <ion-item *ngFor="let tag of iotDatap.options">
+            <gauge [options]="tag" [max]="tag.max" [value]="0"></gauge>
+
+        </ion-item>
+
+
+    </ion-list> -->
+
+    <ion-fab bottom right>
+        <button ion-fab color="danger" (click)="agregarTag()"><ion-icon name="add"></ion-icon></button>
+    </ion-fab>
+
+
+    <!-- Componentes que permiten visualizar datos de dispositivos IoT.
+    <p>
+        Por: Jhon Fredy Estrada Ortiz
+    </p>
+
+    <div class="row">
+
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <gauge [options]="graficos.grafico2.options" [max]="iotDatap.tags[0].max" [value]="graficos.grafico1.value"></gauge>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <gauge [options]="graficos.grafico2.options" [max]="graficos.grafico2.max" [value]="graficos.grafico2.value"></gauge>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+
+
+
+
+
+
+</ion-content>

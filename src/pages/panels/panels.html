@@ -1,0 +1,28 @@
+<ion-header>
+
+    <ion-navbar color="secondary">
+        <button ion-button menuToggle>
+                    <ion-icon name="menu"></ion-icon>
+                  </button>
+        <ion-title>Panels</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list>
+
+        <ion-item *ngFor="let panel of iotDatap.paneles">
+            <ion-avatar item-start>
+                <ngx-avatar name="{{ panel.panel_titulo }}"></ngx-avatar>
+            </ion-avatar>
+            <h2 (click)="seleccionado(panel.panel_titulo, panel.panel_id)">{{ panel.panel_titulo }}</h2>
+        </ion-item>
+
+
+    </ion-list>
+
+    <ion-fab bottom right>
+        <button ion-fab color="danger" (click)="nuevoPanel()"><ion-icon name="add"></ion-icon></button>
+    </ion-fab>
+</ion-content>

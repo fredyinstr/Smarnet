@@ -1,0 +1,48 @@
+<ion-header>
+
+    <ion-navbar color="secondary">
+        <ion-title>login</ion-title>
+
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <img src="../assets/imgs/user_icon2.png">
+
+    <br>
+
+    <ion-list>
+
+        <ion-item>
+            <ion-label floating>Usuario</ion-label>
+            <ion-input type="text" [(ngModel)]="user"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Contraseña</ion-label>
+            <ion-input type="password" [(ngModel)]="pass"></ion-input>
+        </ion-item>
+
+    </ion-list>
+
+    <div padding>
+        <button ion-button color="secondary" block (click)="autenticar()">Ingresar</button>
+
+        <button ion-button color="secondary" block (click)="crearCuenta()">Crear cuenta</button>
+    </div>
+
+</ion-content>
+
+
+<ion-footer>
+    <ion-toolbar color="secondary">
+        <ion-title>
+            <p>
+                Smarnet Copyright &copy; Smartech 2018
+            </p>
+        </ion-title>
+    </ion-toolbar>
+</ion-footer>

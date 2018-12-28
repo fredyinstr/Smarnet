@@ -1,0 +1,55 @@
+<ion-header>
+
+    <ion-navbar color="secondary">
+        <ion-title>Opciones de Tag</ion-title>
+    </ion-navbar>
+    <ion-toolbar color="light">
+        <h4>Agregando: {{tag_nombre}} </h4>
+    </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-card>
+        <ion-card-content>
+            <justgage [options]="options" [max]="max" [value]="value"></justgage>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-list>
+
+        <ion-item>
+            <ion-label stacked>titulo del tag</ion-label>
+            <ion-input type="text" value="" [(ngModel)]="titulo"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>minimo</ion-label>
+            <ion-input type="text" value="" [(ngModel)]="minimo"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>maximo</ion-label>
+            <ion-input type="text" value="" [(ngModel)]="maximo"></ion-input>
+        </ion-item>
+        <ion-item>
+            <!-- <ion-label stacked>Símbolo</ion-label>
+            <ion-input type="text" value="" [(ngModel)]="label"></ion-input> -->
+
+            <ion-label>Símbolo</ion-label>
+            <ion-select [(ngModel)]="label">
+                <ion-option value="">Ninguno</ion-option>
+                <ion-option value="°C">°C</ion-option>
+                <ion-option value="mg/L">mg/L</ion-option>
+                <ion-option value="%">%</ion-option>
+
+            </ion-select>
+
+
+
+        </ion-item>
+
+
+    </ion-list>
+    <button ion-button block (click)="actualizar()">Vista previa</button>
+    <button color="secondary" ion-button block (click)="guardar()">Guardar</button>
+</ion-content>
