@@ -19,6 +19,7 @@ export class MonitorPage {
   panel_id = "";
   mostrar:any;
   iotDatap : IotdataProvider;
+  public press: number = 0;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,

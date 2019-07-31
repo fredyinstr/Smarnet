@@ -67,6 +67,7 @@ export class HistoricoPage {
           }]
         },
         responsive:true,
+        animation:false,
         legend: {
             display: false
           }
@@ -91,7 +92,7 @@ export class HistoricoPage {
   }
 
   adelante(){
-    this.horas -= 5;
+    this.horas -= 1;
     if (this.horas < 0)
       this.horas = 0;
     this._sdProvider.getHistoricoAnterior(this.tag_id, this.horas)
@@ -112,7 +113,7 @@ export class HistoricoPage {
   }
 
   atras(){
-    this.horas += 5;
+    this.horas += 1;
     this._sdProvider.getHistoricoAnterior(this.tag_id, this.horas)
         .map( resp => resp.json() )
         .subscribe(data => {

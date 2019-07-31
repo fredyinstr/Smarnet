@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class IotdataProvider {
 
-  paneles:any[] = [];
+  // paneles:any[] = [];
   options:any[] = [];
 
   constructor(public http: Http) {
@@ -30,17 +30,17 @@ export class IotdataProvider {
    
 
       let url = URL_SERVICIOS + "iotdata/paneles/"+usuario;
-      return this.http.get( url )
-                  .map( resp=>resp.json())
-                    .subscribe( data=>{
-                      if (data.error){
-                      // Tenemos problemas
-                      console.log('HUBO UN PROBLEMA AL CARGAR');
-                      }else{
-                        this.paneles = data.paneles;
-                        console.log('paneles desde service: ', this.paneles)
-                      }
-                    });
+      return this.http.get( url );
+                  // .map( resp=>resp.json())
+                  //   .subscribe( data=>{
+                  //     if (data.error){
+                  //     // Tenemos problemas
+                  //     console.log('HUBO UN PROBLEMA AL CARGAR');
+                  //     }else{
+                  //       this.paneles = data.paneles;
+                  //       console.log('paneles desde service: ', this.paneles)
+                  //     }
+                  //   });
     
   }
 
@@ -91,7 +91,7 @@ export class IotdataProvider {
     return this.http.post(url, data);
   }
 
-  addTagToPanel(panel:any, tag:any, titulo:any, minimo:any, maximo:any, simbolo:any){
+  addTagToPanel(panel:any, tag:any, titulo:any, minimo:any, maximo:any, simbolo:any, visor:any){
     let url = URL_SERVICIOS + "iotdata/addtagtopanel";
     let data = new URLSearchParams();
     data.append('panel', panel);
@@ -100,7 +100,55 @@ export class IotdataProvider {
     data.append('minimo', minimo);
     data.append('maximo', maximo);
     data.append('label', simbolo); 
+    data.append('visor', visor); 
     return this.http.post(url, data);
+  }
+
+
+  public digitalSensorData(tag, valor){
+    console.log("Cambiando valor digital");
+
+    let url = URL_SERVICIOS + "iotdata/digitalSensorData";
+    let data = new URLSearchParams();
+    data.append('tag', tag);
+    data.append('valor', valor);    
+    return this.http.post(url, data);
+  }
+
+  public obtenerSettings(tag){
+    let url = URL_SERVICIOS + "iotdata/obtenerSettings/" + tag;
+    return this.http.get(url);
+  }
+
+  public actualizarTagSettings(tag,programacion){
+    console.log("Cambiando programación semanal");
+
+    let url = URL_SERVICIOS + "iotdata/actualizarTagSettings";
+    let data = new URLSearchParams();
+    data.append('tag', tag);
+    data.append('prog', programacion.prog);
+    data.append('luneson', programacion.luneson); 
+    data.append('lunesoff', programacion.lunesoff);
+    data.append('marteson', programacion.marteson);
+    data.append('martesoff', programacion.martesoff);
+    data.append('miercoleson', programacion.miercoleson);
+    data.append('miercolesoff', programacion.miercolesoff);
+    data.append('jueveson', programacion.jueveson);
+    data.append('juevesoff', programacion.juevesoff);
+    data.append('vierneson', programacion.vierneson);
+    data.append('viernesoff', programacion.viernesoff);
+    data.append('sabadoon', programacion.sabadoon);
+    data.append('sabadooff', programacion.sabadooff);
+    data.append('domingoon', programacion.domingoon);
+    data.append('domingooff', programacion.domingooff);
+      
+    return this.http.post(url, data);
+  }
+
+  public obtenerNotificaciones(tag){
+    console.log('Obteniendo notificaciones...');
+    let url = URL_SERVICIOS + "iotdata/obtenerNotificaciones/" + tag;
+    return this.http.get(url);
   }
 
 }

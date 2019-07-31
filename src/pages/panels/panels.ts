@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController, MenuController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, MenuController} from 'ionic-angular';
 import { IotdataProvider } from '../../providers/iotdata/iotdata';
 import { MonitorPage } from '../monitor/monitor';
 import { AjustesProvider } from '../../providers/ajustes/ajustes';
@@ -19,7 +19,7 @@ export class PanelsPage {
   ajustesp: AjustesProvider;
   iotDatap: IotdataProvider;
 
-  paneles :any;
+  paneles:any[] = [];
   loading:any;
 
   constructor(public navCtrl: NavController, 
@@ -30,6 +30,7 @@ export class PanelsPage {
               private menuCtrl: MenuController) { 
     this.ajustesp = this.ajustes;
     this.iotDatap = this._iotdata;
+    
 
     this.cargando();
     // this.ajustes.cargar_storage()
@@ -57,10 +58,11 @@ export class PanelsPage {
     
   }
 
+  
   // Spinner cargando...
   cargando() {
      this.loading = this.loadingCtrl.create({      
-      content: 'Cargando'
+      content: 'Cargando...'
     });
   
     this.loading.present();
@@ -98,7 +100,21 @@ export class PanelsPage {
 
   ionViewDidEnter(){
     console.log('Entrando a panels');
-    this._iotdata.obtenerPaneles(this.ajustes.ajustes.usuario_id);
+    this.cargando();
+    this._iotdata.obtenerPaneles(this.ajustes.ajustes.usuario_id)
+                .map( resp=>resp.json())
+                                .subscribe( data=>{
+                                  if (data.error){
+                                  // Tenemos problemas
+                                  console.log('HUBO UN PROBLEMA AL CARGAR');
+                                  this.loading.dismiss();
+                                  }else{
+                                    this.paneles = data.paneles;
+                                    console.log('paneles desde panels: ', this.paneles);
+                                    this.loading.dismiss();
+                                  }
+                                });
+                  
   }
 
 }

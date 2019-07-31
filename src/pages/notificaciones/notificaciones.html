@@ -1,0 +1,25 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>notificaciones</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <h4>{{titulo}}</h4>
+
+    <ion-list>
+        <ion-item *ngFor="let alerta of alertas">
+
+            <h2>{{alerta.fecha}}</h2>
+
+            <p *ngIf="alerta.codigoNot==1">Alarma por valor bajo <br>
+                <b>Setpoint: </b>{{alerta.setpoint}} <b>Medida: </b>{{alerta.medida}}</p>
+            <p *ngIf="alerta.codigoNot==2">Alarma por valor alto <br>
+            <b>Setpoint: </b>{{alerta.setpoint}} <b>Medida: </b>{{alerta.medida}}</p>
+        </ion-item>
+    </ion-list>
+
+</ion-content>

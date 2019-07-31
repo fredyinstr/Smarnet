@@ -10,9 +10,10 @@
 
 
 <ion-content padding>
+    <!-- <ion-spinner name="bubbles"></ion-spinner> -->
     <ion-list>
 
-        <ion-item *ngFor="let panel of iotDatap.paneles">
+        <ion-item *ngFor="let panel of paneles">
             <ion-avatar item-start>
                 <ngx-avatar name="{{ panel.panel_titulo }}"></ngx-avatar>
             </ion-avatar>

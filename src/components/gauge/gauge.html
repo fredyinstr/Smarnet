@@ -1,3 +1,12 @@
 <justgage *ngIf="reporte" [options]="options" [max]="max" [value]="value"></justgage>
 <h4 text-center>{{fecha}}</h4>
+<ion-buttons no-padding>
+    <button ion-button icon-only small clear (click)="notificaciones(options.tag_id, options.title)">
+                                            <ion-icon name="notifications"></ion-icon>                        
+                                        </button>
+
+    <button ion-button icon-only small clear (click)="historico(options.tag_id, options.title)">
+                <ion-icon name="stats"></ion-icon>                   
+                                </button>
+</ion-buttons>
 <ion-spinner *ngIf="!reporte" name="bubbles"></ion-spinner>

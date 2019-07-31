@@ -11,29 +11,49 @@
 
 
 <ion-content padding>
-    <ion-card>
+    <ion-list>
+        <ion-item>
+            <ion-label>Visor</ion-label>
+            <ion-select [(ngModel)]="visor">
+                <ion-option value="">Seleccionar</ion-option>
+                <ion-option value="gauge">Gauge</ion-option>
+                <ion-option value="switch">Switch</ion-option>
+            </ion-select>
+        </ion-item>
+    </ion-list>
+
+    <ion-card text-center *ngIf="visor == 'gauge'">
         <ion-card-content>
             <justgage [options]="options" [max]="max" [value]="value"></justgage>
         </ion-card-content>
     </ion-card>
-
+    <ion-grid no-padding>
+        <ion-row justify-content-center no-padding>
+            <ion-col col-6 col-sm-4 no-padding align-self-center>
+                <ion-card text-center *ngIf="visor == 'switch'">
+                    <ion-card-content>
+                        <h4>{{titulo}}</h4><br>
+                        <ui-switch size="large"></ui-switch>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
     <ion-list>
 
         <ion-item>
             <ion-label stacked>titulo del tag</ion-label>
             <ion-input type="text" value="" [(ngModel)]="titulo"></ion-input>
         </ion-item>
-        <ion-item>
+        <ion-item *ngIf="visor == 'gauge'">
             <ion-label stacked>minimo</ion-label>
             <ion-input type="text" value="" [(ngModel)]="minimo"></ion-input>
         </ion-item>
-        <ion-item>
+        <ion-item *ngIf="visor == 'gauge'">
             <ion-label stacked>maximo</ion-label>
             <ion-input type="text" value="" [(ngModel)]="maximo"></ion-input>
         </ion-item>
-        <ion-item>
-            <!-- <ion-label stacked>Símbolo</ion-label>
-            <ion-input type="text" value="" [(ngModel)]="label"></ion-input> -->
+        <ion-item *ngIf="visor == 'gauge'">
 
             <ion-label>Símbolo</ion-label>
             <ion-select [(ngModel)]="label">
@@ -41,6 +61,7 @@
                 <ion-option value="°C">°C</ion-option>
                 <ion-option value="mg/L">mg/L</ion-option>
                 <ion-option value="%">%</ion-option>
+                <ion-option value="A">A</ion-option>
 
             </ion-select>
 

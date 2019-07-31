@@ -16,6 +16,7 @@ export class TagopcionesPage {
   maximo=100;
   titulo='titulo';
   label='';
+  visor = "";
 
   options = {
     min: 0,
@@ -33,6 +34,7 @@ export class TagopcionesPage {
     this.panel_id = this.navParams.get('panel_id');
     this.tag_id = this.navParams.get('tag_id');
     this.tag_nombre = this.navParams.get('tag_nombre');
+    this.titulo = this.tag_nombre;
   }
 
   actualizar(){
@@ -52,7 +54,8 @@ export class TagopcionesPage {
                                   this.titulo,
                                   this.minimo, 
                                   this.maximo,
-                                  this.label)
+                                  this.label,
+                                  this.visor)
                     .subscribe( res=>{
                       let respuesta = res.json();
                       if(respuesta.error){

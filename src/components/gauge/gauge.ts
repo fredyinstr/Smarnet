@@ -1,6 +1,9 @@
 import { Component, Input, OnInit  } from '@angular/core';
 import { Observable, Subject} from "rxjs";
 import { IotdataProvider } from '../../providers/iotdata/iotdata';
+import { NavController } from 'ionic-angular';
+import { HistoricoPage } from '../../pages/historico/historico';
+import { NotificacionesPage } from '../../pages/notificaciones/notificaciones';
 
 
 
@@ -24,7 +27,8 @@ export class GaugeComponent implements OnInit  {
   reporte: any;
   fecha: any;
 
-  constructor(private dataprovider: IotdataProvider) {
+  constructor(private dataprovider: IotdataProvider,
+              private navCtrl: NavController) {
     console.log('Hello GaugeComponent Component');
     this.text = 'Hello World';
   }
@@ -40,11 +44,25 @@ export class GaugeComponent implements OnInit  {
     if ((d.getMonth === hoy.getMonth)&&(d.getDate() === hoy.getDate()))
       mesdia = "Hoy";
     var minutes = d.getMinutes();     
-    return mesdia +" "+d.getHours()+":"+String(minutes > 9 ? minutes : '0' + minutes); ;
-
+    return mesdia +" "+d.getHours()+":"+String(minutes > 9 ? minutes : '0' + minutes);
   }
 
-  ngOnInit(){
+  historico(tag_id, title){
+    this.navCtrl.push(HistoricoPage, { 'tag_id':tag_id, 'label':title });
+  }
+
+  notificaciones(tag_id, title){
+    this.navCtrl.push(NotificacionesPage, {'tag_id':tag_id, 'titulo':title});
+    // const alert = this.alertCtrl.create({
+    //   title: 'Próximamente!',
+    //   subTitle: 'El servicio de notificaciones estará disponible próximamente',
+    //   buttons: ['OK']
+    // });
+    // alert.present();
+  }
+
+
+   ngOnInit(){
     this.dataprovider.datatag(this.options.tag_id)
           .map( resp => resp.json() )
           .subscribe( data=>{
@@ -58,8 +76,7 @@ export class GaugeComponent implements OnInit  {
             }
           });
 
-
-
+    
       Observable.interval(20000).takeUntil(this.destroy)
       .subscribe(
         ()=>{

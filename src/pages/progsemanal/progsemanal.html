@@ -1,0 +1,86 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Programar encendido/apagado</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <form [formGroup]="formulario" (ngSubmit)="enviarProgramacion()">
+        <!-- List of Text Items -->
+        <ion-list>
+            <ion-item>
+                <ion-label>Activar programación</ion-label>
+                <ion-toggle formControlName="prog" slot="end" [(ngModel)]="programacion.prog"></ion-toggle>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Encendido lunes</ion-label>
+                <ion-datetime formControlName="luneson" #onlunes displayFormat="h:mm a" pickerformat="HH:mm" [(ngModel)]="programacion.luneson" [placeholder]="programacion.luneson"></ion-datetime>
+            </ion-item>
+            <ion-item>
+                <ion-label>Apagado lunes</ion-label>
+                <ion-datetime formControlName="lunesoff" displayFormat="h:mm a" pickerformat="HH:mm" [(ngModel)]="programacion.lunesoff" [placeholder]="programacion.lunesoff"></ion-datetime>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Encendido martes</ion-label>
+                <ion-datetime formControlName="marteson" displayFormat="h:mm a" pickerformat="HH:mm" [(ngModel)]="programacion.marteson" [placeholder]="programacion.marteson"></ion-datetime>
+            </ion-item>
+            <ion-item>
+                <ion-label>Apagado martes</ion-label>
+                <ion-datetime formControlName="martesoff" displayFormat="h:mm a" pickerformat="HH:mm" [(ngModel)]="programacion.martesoff" [placeholder]="programacion.martesoff"></ion-datetime>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Encendido miércoles</ion-label>
+                <ion-datetime formControlName="miercoleson" displayFormat="h:mm a" pickerformat="HH:mm" [(ngModel)]="programacion.miercoleson" [placeholder]="programacion.miercoleson"></ion-datetime>
+            </ion-item>
+            <ion-item>
+                <ion-label>Apagado miércoles</ion-label>
+                <ion-datetime formControlName="miercolesoff" displayFormat="h:mm a" pickerformat="HH:mm" [(ngModel)]="programacion.miercolesoff" [placeholder]="programacion.miercolesoff "></ion-datetime>
+            </ion-item>
+            <ion-item>
+                <ion-label>Encendido jueves</ion-label>
+                <ion-datetime formControlName="jueveson" displayFormat="h:mm a" pickerformat="HH:mm" [(ngModel)]="programacion.jueveson" [placeholder]="programacion.jueveson"></ion-datetime>
+            </ion-item>
+            <ion-item>
+                <ion-label>Apagado jueves</ion-label>
+                <ion-datetime formControlName="juevesoff" displayFormat="h:mm a" pickerformat="HH:mm" [(ngModel)]="programacion.juevesoff" [placeholder]="programacion.juevesoff"></ion-datetime>
+            </ion-item>
+            <ion-item>
+                <ion-label>Encendido viernes</ion-label>
+                <ion-datetime formControlName="vierneson" displayFormat="h:mm a" pickerformat="HH:mm" [(ngModel)]="programacion.vierneson" [placeholder]="programacion.vierneson"></ion-datetime>
+            </ion-item>
+            <ion-item>
+                <ion-label>Apagado viernes</ion-label>
+                <ion-datetime formControlName="viernesoff" displayFormat="h:mm a" pickerformat="HH:mm" [(ngModel)]="programacion.viernesoff" [placeholder]="programacion.viernesoff"></ion-datetime>
+            </ion-item>
+            <ion-item>
+                <ion-label>Encendido sabado</ion-label>
+                <ion-datetime formControlName="sabadoon" displayFormat="h:mm a" pickerformat="HH:mm" [(ngModel)]="programacion.sabadoon" [placeholder]="programacion.sabadoon"></ion-datetime>
+            </ion-item>
+            <ion-item>
+                <ion-label>Apagado sábado</ion-label>
+                <ion-datetime formControlName="sabadooff" displayFormat="h:mm a" pickerformat="HH:mm" [(ngModel)]="programacion.sabadooff" [placeholder]="programacion.sabadooff"></ion-datetime>
+            </ion-item>
+            <ion-item>
+                <ion-label>Encendido domingo</ion-label>
+                <ion-datetime formControlName="domingoon" displayFormat="h:mm a" pickerformat="HH:mm" [(ngModel)]="programacion.domingoon" [placeholder]="programacion.domingoon"></ion-datetime>
+            </ion-item>
+            <ion-item>
+                <ion-label>Apagado domingo</ion-label>
+                <ion-datetime formControlName="domingooff" displayFormat="h:mm a" pickerformat="HH:mm" [(ngModel)]="programacion.domingooff" [placeholder]="programacion.domingooff"></ion-datetime>
+            </ion-item>
+        </ion-list>
+        <button type="submit" ion-button block>GUARDAR</button>
+    </form>
+
+
+
+
+
+</ion-content>

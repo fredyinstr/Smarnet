@@ -6,11 +6,17 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 // Módulos
 import { JustgageModule  } from "angular2-justgage";
-import { GaugeComponent } from '../components/gauge/gauge';
 import { IonicStorageModule } from '@ionic/storage';
 import { HttpModule } from '@angular/http';
 import { AvatarModule } from 'ngx-avatar';
 import { ChartsModule } from 'ng2-charts';
+import { UiSwitchModule } from 'ngx-toggle-switch';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+// Componentes
+import { GaugeComponent } from '../components/gauge/gauge';
+import { SwitchComponent } from '../components/switch/switch';
+
 
 // Páginas
 import { MyApp } from './app.component';
@@ -25,6 +31,10 @@ import { AddpanelPage } from '../pages/addpanel/addpanel';
 import { DispositivosPage } from '../pages/dispositivos/dispositivos';
 import { NuevodispositivoPage } from '../pages/nuevodispositivo/nuevodispositivo';
 import { TagopcionesPage } from '../pages/tagopciones/tagopciones';
+import { ProgsemanalPage } from '../pages/progsemanal/progsemanal';
+import { NotificacionesPage } from '../pages/notificaciones/notificaciones';
+
+
 
 
 // Servicios
@@ -46,7 +56,10 @@ import { LoginProvider } from '../providers/login/login';
     DispositivosPage,
     NuevodispositivoPage,
     TagopcionesPage,
-    GaugeComponent
+    ProgsemanalPage,
+    NotificacionesPage,
+    GaugeComponent,
+    SwitchComponent
   ],
   imports: [
     BrowserModule,
@@ -54,6 +67,9 @@ import { LoginProvider } from '../providers/login/login';
     AvatarModule,
     JustgageModule,
     ChartsModule,
+    UiSwitchModule,
+    FormsModule,
+    ReactiveFormsModule,
     // IonicModule.forRoot(MyApp,{
     //   backButtonText:'Atrás'
     // })
@@ -74,6 +90,8 @@ import { LoginProvider } from '../providers/login/login';
     DispositivosPage,
     TagopcionesPage,
     NuevodispositivoPage,
+    ProgsemanalPage,
+    NotificacionesPage
   ],
   providers: [
     StatusBar,
